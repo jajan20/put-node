@@ -1,0 +1,24 @@
+{
+  "name": "put-node",
+  "version": "1.0.0",
+  "description": "PutIO and Node",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jajan20/put-node.git"
+  },
+  "author": "Jamie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jajan20/put-node/issues"
+  },
+  "homepage": "https://github.com/jajan20/put-node#readme"
+}
