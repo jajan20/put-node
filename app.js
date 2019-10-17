@@ -7,7 +7,7 @@ const webSocketServer = require('websocket').server
 const server = http.createServer(function(req, res) {
   res.end()
 })
-      server.listen(5000)
+
 
 const wsServer = new webSocketServer ({ 
   httpServer: server,
@@ -15,6 +15,8 @@ const wsServer = new webSocketServer ({
 })
 
 const port = process.env.PORT || 3000
+
+server.listen(port)
 
 let whiteList = 'https://put-node.herokuapp.com/'
 
