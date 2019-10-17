@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 
 app.post('/putio', (req, res) => {
   console.log('PutIO:', req.body)
+  res.write(`<pre>${res.body}</pre>`)
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
