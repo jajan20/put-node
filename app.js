@@ -10,12 +10,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
   console.log('GET:')
-  res.sendFile(__dirname + '/index.html')
+  res.write('<p>Hello Server</p>')
+  res.end()
 })
 
 io.on('connection', (socket) => {
+  console.log('IO Connection')
   socket.on('create data', function(data) {
-    console.log('IO Connection')
     socket.emit('data created', data)
   })
 })
