@@ -10,17 +10,22 @@ const server = http.createServer()
 const wsServer = new webSocketServer ({ httpServer: server })
 const port = process.env.PORT || 3000
 
-let corsOptions = {
-  origin: 'https://put-node.herokuapp.com/',
+let whiteList = 'https://put-node.herokuapp.com/'
+
+
+function originIsAllowed(origin) {
+  return origin == whiteList
 }
 
 wsServer.on('request', function(request) {
+//  if (originIsAllowed(request.origin)) {
   console.log('Client connection succesful!', request.origin)
-  let connection = request.accept('PutIO', request.origin)
+  let connection = request.accept('PutIO')
   connection.on('message', function(message) {
     console.log('Message', message)
   })
   connection.sendUTF('Thanks for your message!')
+//  }
 })
 
 
