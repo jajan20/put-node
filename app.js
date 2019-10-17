@@ -4,10 +4,16 @@ const http = require('http')
 const cors = require('cors')
 
 const webSocketServer = require('websocket').server
-const server = http.createServer()
+const server = http.createServer(function(req, res) {
+  res.end()
+})
       server.listen(5000)
 
-const wsServer = new webSocketServer ({ httpServer: server })
+const wsServer = new webSocketServer ({ 
+  httpServer: server,
+  autoAcceptConnections: true 
+})
+
 const port = process.env.PORT || 3000
 
 let whiteList = 'https://put-node.herokuapp.com/'
@@ -31,19 +37,19 @@ wsServer.on('request', function(request) {
 
 
 
-app.use(cors())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+// app.use(cors())
+// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
-  console.log('')
-  res.write('<p>Hello Server</p>')
-  res.end()
-})
+// app.get('/', (req, res) => {
+//   console.log('')
+//   res.write('<p>Hello Server</p>')
+//   res.end()
+// })
 
-app.post('/putio', (req, res) => {
-  console.log('PutIO:', req.body)
-  res.end()
-})
+// app.post('/putio', (req, res) => {
+//   console.log('PutIO:', req.body)
+//   res.end()
+// })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
