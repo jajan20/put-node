@@ -6,6 +6,10 @@ const cors = require('cors')
 
 const port = process.env.PORT || 3000
 
+let corsOptions = {
+  origin: 'https://put-node.herokuapp.com/',
+}
+
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -16,7 +20,7 @@ app.get('/', (req, res) => {
   res.end()
 })
 
-io.on('connection', cors(), (socket) => {
+io.on('connection', cors(corsOptions), (socket) => {
   console.log('IO Connection')
   socket.on('create data', function(data) {
     socket.emit('data created', data)
@@ -28,7 +32,7 @@ io.on('connection', cors(), (socket) => {
 //   res.end()
 // })
 
-app.post('/putio', cors(), (req, res) => {
+app.post('/putio', cors(corsOptions), (req, res) => {
   io.sockets.emit('data created', data)
 })
 
