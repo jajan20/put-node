@@ -14,7 +14,7 @@ let corsOptions = {
   origin: 'https://put-node.herokuapp.com/',
 }
 
-webSocketServer.on('request', function(request) {
+wsServer.on('request', function(request) {
   console.log('Client connection succesful!', request.origin)
   let connection = request.accept('PutIO', request.origin)
   connection.on('message', function(message) {
